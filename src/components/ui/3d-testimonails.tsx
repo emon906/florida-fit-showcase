@@ -164,12 +164,14 @@ export function TestimonialsMarquee3D({
   className?: string;
 }) {
   const size = Math.ceil(testimonials.length / 4);
-  const columns = [
+  const columns: Testimonial[][] = [
     testimonials.slice(0, size),
     testimonials.slice(size, size * 2),
     testimonials.slice(size * 2, size * 3),
     testimonials.slice(size * 3),
   ];
+  const [col0 = [], col1 = [], col2 = [], col3 = []] = columns;
+
 
   return (
     <div
