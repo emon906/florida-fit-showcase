@@ -164,12 +164,14 @@ export function TestimonialsMarquee3D({
   className?: string;
 }) {
   const size = Math.ceil(testimonials.length / 4);
-  const columns = [
+  const columns: Testimonial[][] = [
     testimonials.slice(0, size),
     testimonials.slice(size, size * 2),
     testimonials.slice(size * 2, size * 3),
     testimonials.slice(size * 3),
   ];
+  const [col0 = [], col1 = [], col2 = [], col3 = []] = columns;
+
 
   return (
     <div
@@ -187,22 +189,22 @@ export function TestimonialsMarquee3D({
         }}
       >
         <Marquee pauseOnHover vertical className="[--duration:34s]">
-          {columns[0].map((t) => (
+          {col0.map((t) => (
             <TestimonialCard key={t.name} {...t} />
           ))}
         </Marquee>
         <Marquee reverse pauseOnHover vertical className="[--duration:28s]">
-          {columns[1].map((t) => (
+          {col1.map((t) => (
             <TestimonialCard key={t.name} {...t} />
           ))}
         </Marquee>
         <Marquee pauseOnHover vertical className="hidden [--duration:38s] md:flex">
-          {columns[2].map((t) => (
+          {col2.map((t) => (
             <TestimonialCard key={t.name} {...t} />
           ))}
         </Marquee>
         <Marquee reverse pauseOnHover vertical className="hidden [--duration:30s] lg:flex">
-          {columns[3].map((t) => (
+          {col3.map((t) => (
             <TestimonialCard key={t.name} {...t} />
           ))}
         </Marquee>
